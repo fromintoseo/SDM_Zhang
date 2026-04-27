@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e1110be-07af-441e-8085-469e63d0644f" name="변경" comment="4차 수정">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="0e1110be-07af-441e-8085-469e63d0644f" name="변경" comment="6차 수정">
+      <change beforePath="$PROJECT_DIR$/.idea/260407-28_FJSP_Zhang_구현.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/260407-28_FJSP_Zhang_구현.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/세미나자료/260428_FJSP_Zhang_구현_최종.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/세미나자료/260428_FJSP_Zhang_구현_최종.pptx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,6 +15,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "fromintoseo"
+  }
+}]]></component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/fromintoseo/SDM_Zhang.git",
@@ -54,7 +63,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1777286378450</updated>
-      <workItem from="1777286379541" duration="328000" />
+      <workItem from="1777286379541" duration="5406000" />
     </task>
     <task id="LOCAL-00001" summary="4차 수정">
       <option name="closed" value="true" />
@@ -64,7 +73,23 @@
       <option name="project" value="LOCAL" />
       <updated>1777286652800</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="5차 수정">
+      <option name="closed" value="true" />
+      <created>1777286791843</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1777286791843</updated>
+    </task>
+    <task id="LOCAL-00003" summary="6차 수정">
+      <option name="closed" value="true" />
+      <created>1777289945781</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1777289945781</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -72,6 +97,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="4차 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="4차 수정" />
+    <MESSAGE value="5차 수정" />
+    <MESSAGE value="6차 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="6차 수정" />
   </component>
 </project>

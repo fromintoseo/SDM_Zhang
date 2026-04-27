@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.12 (260407-28_FJSP_Zhang_구현)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (260407-28_FJSP_Zhang_구현)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Remote 3.10 (sftp://mskang@220.149.87.196:2223/home/mskang/miniconda3/envs/ml_core/bin/python)" project-jdk-type="Python SDK" />
 </project>

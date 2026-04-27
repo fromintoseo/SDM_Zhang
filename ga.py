@@ -1,6 +1,6 @@
 import random
 from decoder import decode_calc, makespan
-# ㅇ
+
 def init_GS(instance):
     # Global Selection: 전체 누적 시간을 고려하여 기계 할당
     MS = [0] * instance.total_operations
@@ -10,31 +10,29 @@ def init_GS(instance):
     random.shuffle(jobs_seq) # Job 순서 랜덤하게 결정
     for j in jobs_seq:
         job = instance.jobs[j]
-        for op in job.operations:
-            best_alt_idx = 0
+        for op in job.operations: # job의 첫번째 Operation부터 차례로 꺼냄
+            best_alternative_idx = 0
             min_time = float('inf')
 
             for alt_idx, (machine_id, processing_time) in enumerate(op.alternatives):
                 estimated_time = time_array[machine_id] + processing_time
                 if estimated_time < min_time:
                     min_time = estimated_time
-                    best_alt_idx = alt_idx
+                    best_alternative_idx = alt_idx
                 elif estimated_time == min_time:
-                    if random.random() < 0.5:
-                        best_alt_idx = alt_idx
+                    if random.random() < 0.5: # 시간이 같은 경우는 50%의 확률로 결정
+                        best_alternative_idx = alt_idx
+            op_idx = instance.job_index[j] + op.op_id
+            MS[op_idx] = best_alternative_idx
 
-            # [개선점] offset을 이용하여 즉시 위치 배정
-            flat_op_idx = instance.job_index[j] + op.op_id
-            MS[flat_op_idx] = best_alt_idx
-
-            selected_machine_id, selected_ptime = op.alternatives[best_alt_idx]
+            selected_machine_id, selected_ptime = op.alternatives[best_alternative_idx]
             time_array[selected_machine_id] += selected_ptime
 
     return MS
 
 
 def init_LS(instance):
-    """Local Selection: 개별 Job마다 기계 누적 시간을 리셋하여 할당 (MS)"""
+    # Local Selection: 개별 Job마다 기계 누적 시간을 리셋하여 할당
     MS = [0] * instance.total_operations
 
     jobs_seq = list(range(len(instance.jobs)))
@@ -44,18 +42,18 @@ def init_LS(instance):
         time_array = [0] * len(instance.machines)  # Job 바뀔 때마다 리셋
         job = instance.jobs[j]
         for op in job.operations:
-            best_alt_idx = 0
+            best_alternative_idx = 0
             min_time = float('inf')
             for alt_idx, (machine_id, processing_time) in enumerate(op.alternatives):
                 estimated_time = time_array[machine_id] + processing_time
                 if estimated_time < min_time:
                     min_time = estimated_time
-                    best_alt_idx = alt_idx
+                    best_alternative_idx = alt_idx
 
-            flat_op_idx = instance.job_index[j] + op.op_id
-            MS[flat_op_idx] = best_alt_idx
+            op_idx = instance.job_index[j] + op.op_id
+            MS[op_idx] = best_alternative_idx
 
-            selected_machine_id, selected_ptime = op.alternatives[best_alt_idx]
+            selected_machine_id, selected_ptime = op.alternatives[best_alternative_idx]
             time_array[selected_machine_id] += selected_ptime
 
     return MS
@@ -72,7 +70,7 @@ def init_RS(instance):
 def init_OS_random(instance):
     OS = []
     for job in instance.jobs:
-        OS.extend([job.job_id] * len(job.operations))
+        OS.append(job.job_id)
     random.shuffle(OS)
     return OS
 
@@ -93,7 +91,7 @@ def generate_initial_population(instance, pop_size):
 def select_tournament(population, fitnesses, k=3):
     selected_indices = random.sample(range(len(population)), k)
 
-    # 선택된 인덱스 중 fitness가 가장 좋은(낮은) 인덱스 찾기
+    # 선택된 인덱스 중 fitness가 가장 낮은 인덱스 찾기
     best_idx = min(selected_indices, key=lambda idx: fitnesses[idx])
 
     best_ms, best_os = population[best_idx]
@@ -101,10 +99,10 @@ def select_tournament(population, fitnesses, k=3):
 
 def crossover_MS(p1_ms, p2_ms):
     c1_ms, c2_ms = list(p1_ms), list(p2_ms)
-    if random.random() < 0.5:
+    if random.random() < 0.5: # 2점교차
         pt1, pt2 = sorted(random.sample(range(len(p1_ms)), 2))
         c1_ms[pt1:pt2], c2_ms[pt1:pt2] = c2_ms[pt1:pt2], c1_ms[pt1:pt2]
-    else:
+    else: # 균등교차
         for i in range(len(p1_ms)):
             if random.random() < 0.5:
                 c1_ms[i], c2_ms[i] = c2_ms[i], c1_ms[i]
@@ -114,7 +112,7 @@ def crossover_MS(p1_ms, p2_ms):
 def crossover_OS_POX(p1_os, p2_os, num_jobs):
     jobs = list(range(num_jobs))
     random.shuffle(jobs)
-    js1 = set(jobs[:len(jobs) // 2])
+    js1 = set(random.sample(range(num_jobs), num_jobs // 2))
 
     c1_os = [-1] * len(p1_os)
     c2_os = [-1] * len(p2_os)
@@ -140,8 +138,6 @@ def crossover_OS_POX(p1_os, p2_os, num_jobs):
 
 def mutate_MS(ms, instance):
     mut_idx = random.randint(0, len(ms) - 1)
-
-    # [수정됨] 매번 이중 for문으로 리스트를 생성하지 않고, 미리 생성된 flat_ops를 O(1)로 가져옴
     target_op = instance.ops_instances[mut_idx]
 
     best_alt_idx = 0

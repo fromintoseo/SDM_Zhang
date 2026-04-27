@@ -1,5 +1,5 @@
 from model import ScheduledOp
-#3
+
 def decode_calc(instance, OS, MS):
     num_jobs = len(instance.jobs)
     num_machines = len(instance.machines)

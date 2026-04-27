@@ -1,4 +1,4 @@
-#4
+
 # run_stage.py
 import os
 import time

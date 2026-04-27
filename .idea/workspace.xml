@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e1110be-07af-441e-8085-469e63d0644f" name="변경" comment="" />
+    <list default="true" id="0e1110be-07af-441e-8085-469e63d0644f" name="변경" comment="4차 수정">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,6 +12,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/fromintoseo/SDM_Zhang.git",
+    "accountId": "9f4f386c-fa75-40d7-afc7-608b245c832c"
+  }
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 2,
   "fromUser": false
@@ -23,8 +31,11 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "ai.playground.ignore.import.keys.banner.in.settings": "true",
     "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -43,11 +54,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1777286378450</updated>
-      <workItem from="1777286379541" duration="3000" />
+      <workItem from="1777286379541" duration="328000" />
     </task>
+    <task id="LOCAL-00001" summary="4차 수정">
+      <option name="closed" value="true" />
+      <created>1777286652800</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1777286652800</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="4차 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="4차 수정" />
   </component>
 </project>

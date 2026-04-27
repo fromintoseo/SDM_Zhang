@@ -1,5 +1,5 @@
 from model import Instance, Job, Machine, Operation
-
+#4
 def load_mk(path: str) -> Instance:
     with open(path, 'r') as f:
         mk = f.read().split() # 모든 숫자를 리스트에 넣어서 인덱싱

@@ -1,0 +1,41 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments (가상환경)
+venv/
+.venv/
+env/
+bin/
+lib/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+
+# PyCharm / JetBrains (파이참 설정 파일)
+.idea/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Data files (데이터 파일이 너무 크면 제외하는 것이 좋습니다)
+*.csv
+*.xlsx
+*.zip
+*.fjs
+*.html
+*.png
+
+/results
+/Dataset
+/세미나자료

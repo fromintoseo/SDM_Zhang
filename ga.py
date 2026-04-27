@@ -1,6 +1,6 @@
 import random
 from decoder import decode_calc, makespan
-
+# ㅇ
 def init_GS(instance):
     # Global Selection: 전체 누적 시간을 고려하여 기계 할당
     MS = [0] * instance.total_operations

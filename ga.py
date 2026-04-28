@@ -136,21 +136,21 @@ def crossover_OS_POX(p1_os, p2_os, num_jobs):
 
     return c1_os, c2_os
 
+def mutate_MS(ms, instance, pm):
+    for mut_idx in range(len(ms)):
+        if random.random() <= pm:
+            target_op = instance.ops_instances[mut_idx]
 
-def mutate_MS(ms, instance):
-    mut_idx = random.randint(0, len(ms) - 1)
-    target_op = instance.ops_instances[mut_idx]
+            best_alt_idx = 0
+            min_time = float('inf')
+            for alt_idx, (machine_id, processing_time) in enumerate(target_op.alternatives):
+                if processing_time < min_time:
+                    min_time = processing_time
+                    best_alt_idx = alt_idx
 
-    best_alt_idx = 0
-    min_time = float('inf')
-    for alt_idx, (machine_id, processing_time) in enumerate(target_op.alternatives):
-        if processing_time < min_time:
-            min_time = processing_time
-            best_alt_idx = alt_idx
+            ms[mut_idx] = best_alt_idx
 
-    ms[mut_idx] = best_alt_idx
     return ms
-
 
 def mutate_OS(os):
     idx1, idx2 = random.sample(range(len(os)), 2)
@@ -188,9 +188,9 @@ def run_ga(instance, pop_size=100, generations=100, pc=0.7, pm=0.01):
                 c1_ms, c1_os = list(p1_ms), list(p1_os)
                 c2_ms, c2_os = list(p2_ms), list(p2_os)
 
-            if random.random() < pm: c1_ms = mutate_MS(c1_ms, instance)
+            c1_ms = mutate_MS(c1_ms, instance, pm)
             if random.random() < pm: c1_os = mutate_OS(c1_os)
-            if random.random() < pm: c2_ms = mutate_MS(c2_ms, instance)
+            c2_ms = mutate_MS(c2_ms, instance, pm)
             if random.random() < pm: c2_os = mutate_OS(c2_os)
 
             new_population.append((c1_ms, c1_os))

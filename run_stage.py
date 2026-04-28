@@ -1,4 +1,4 @@
-'''
+
 # run_stage.py
 import os
 import time
@@ -156,7 +156,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-'''
+
 
 '''
 # run_stage_barnes.py
@@ -337,7 +337,7 @@ def main():
 if __name__ == "__main__":
     main()
 '''
-
+'''
 # run_stage_dauzere.py
 import os
 import time
@@ -504,3 +504,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+'''

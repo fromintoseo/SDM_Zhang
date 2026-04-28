@@ -1,4 +1,4 @@
-
+'''
 # run_stage.py
 import os
 import time
@@ -156,7 +156,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-
+'''
 
 '''
 # run_stage_barnes.py
@@ -336,12 +336,8 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
 '''
 
-'''
 # run_stage_dauzere.py
 import os
 import time
@@ -417,7 +413,7 @@ def run_experiment(instance_path, base_save_dir, num_runs=5):
     try:
         inst = load_mk(instance_path)
     except Exception as e:
-        print(f"❌ 파일 로드 실패: {e}")
+        print(f"파일 로드 실패: {e}")
         return None
 
     save_dir = os.path.join(base_save_dir, dataset_name)
@@ -501,15 +497,10 @@ def main():
         csv_file = os.path.join(base_save_dir, "dauzere_experiment_summary.csv")
         df.to_csv(csv_file, index=False, encoding='utf-8-sig')
 
-        print("\n📊 [Dauzere 전체 실험 결과 요약 표]")
         print("-" * 100)
         print(df.to_string(index=False))
         print("-" * 100)
-        print(f"\n✅ 전체 실험 통계가 CSV로 저장되었습니다: {csv_file}")
-    else:
-        print("\n❌ 실험 결과가 없습니다. 파일 경로를 다시 확인해주세요.")
 
 
 if __name__ == "__main__":
     main()
-'''

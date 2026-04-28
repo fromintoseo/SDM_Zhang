@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e1110be-07af-441e-8085-469e63d0644f" name="변경" comment="6차 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/260407-28_FJSP_Zhang_구현.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/260407-28_FJSP_Zhang_구현.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ga.py" beforeDir="false" afterPath="$PROJECT_DIR$/ga.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_stage.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_stage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/세미나자료/260428_FJSP_Zhang_구현_최종.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/세미나자료/260428_FJSP_Zhang_구현_최종.pptx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,22 +15,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "fromintoseo"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;fromintoseo&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/fromintoseo/SDM_Zhang.git",
-    "accountId": "9f4f386c-fa75-40d7-afc7-608b245c832c"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/fromintoseo/SDM_Zhang.git&quot;,
+    &quot;accountId&quot;: &quot;9f4f386c-fa75-40d7-afc7-608b245c832c&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2,
-  "fromUser": false
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3CwAhUVLAyMGmyQCzCXFdmICEay" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -39,6 +39,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.ga.executor": "Run",
+    "Python.run_stage.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
@@ -64,6 +66,11 @@
       <option name="presentableId" value="Default" />
       <updated>1777286378450</updated>
       <workItem from="1777286379541" duration="5406000" />
+      <workItem from="1777295258530" duration="106000" />
+      <workItem from="1777339801795" duration="28000" />
+      <workItem from="1777341165850" duration="4000" />
+      <workItem from="1777341296071" duration="829000" />
+      <workItem from="1777342576263" duration="5654000" />
     </task>
     <task id="LOCAL-00001" summary="4차 수정">
       <option name="closed" value="true" />
@@ -89,7 +96,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777289945781</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="6차 수정">
+      <option name="closed" value="true" />
+      <created>1777295291655</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1777295291655</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,5 +115,9 @@
     <MESSAGE value="5차 수정" />
     <MESSAGE value="6차 수정" />
     <option name="LAST_COMMIT_MESSAGE" value="6차 수정" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/260407_28_FJSP_Zhang_$ga.coverage" NAME="ga 커버리지 결과" MODIFIED="1777346320353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/260407_28_FJSP_Zhang_$run_stage.coverage" NAME="run_stage 커버리지 결과" MODIFIED="1777346510043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

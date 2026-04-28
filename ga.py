@@ -70,7 +70,8 @@ def init_RS(instance):
 def init_OS_random(instance):
     OS = []
     for job in instance.jobs:
-        OS.append(job.job_id)
+        for op in range(len(job.operations)):
+            OS.append(job.job_id)
     random.shuffle(OS)
     return OS
 
@@ -174,11 +175,7 @@ def run_ga(instance, pop_size=100, generations=100, pc=0.7, pm=0.01):
             global_best_schedule = decode_calc(instance, population[best_idx][1], population[best_idx][0])
 
         best_makespan_history.append(global_best_makespan)
-
         new_population = []
-
-        best_ms, best_os = population[best_idx]
-        new_population.append((list(best_ms), list(best_os)))
 
         while len(new_population) < pop_size:
             p1_ms, p1_os = select_tournament(population, fitnesses)
@@ -197,9 +194,6 @@ def run_ga(instance, pop_size=100, generations=100, pc=0.7, pm=0.01):
             if random.random() < pm: c2_os = mutate_OS(c2_os)
 
             new_population.append((c1_ms, c1_os))
-            if len(new_population) < pop_size:
-                new_population.append((c2_ms, c2_os))
-
-        population = new_population[:pop_size]
-
+            new_population.append((c2_ms, c2_os))
+        population = new_population
     return global_best_schedule, global_best_makespan, best_makespan_history

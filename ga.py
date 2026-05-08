@@ -177,16 +177,18 @@ def run_ga(instance, pop_size=100, generations=100, pc=0.7, pm=0.01):
         best_makespan_history.append(global_best_makespan)
         new_population = []
 
+        # elitism...
+
         while len(new_population) < pop_size:
             p1_ms, p1_os = select_tournament(population, fitnesses)
             p2_ms, p2_os = select_tournament(population, fitnesses)
 
+            c1_ms, c1_os = list(p1_ms), list(p1_os)
+            c2_ms, c2_os = list(p2_ms), list(p2_os)
+
             if random.random() < pc:
                 c1_ms, c2_ms = crossover_MS(p1_ms, p2_ms)
                 c1_os, c2_os = crossover_OS_POX(p1_os, p2_os, len(instance.jobs))
-            else:
-                c1_ms, c1_os = list(p1_ms), list(p1_os)
-                c2_ms, c2_os = list(p2_ms), list(p2_os)
 
             c1_ms = mutate_MS(c1_ms, instance, pm)
             if random.random() < pm: c1_os = mutate_OS(c1_os)

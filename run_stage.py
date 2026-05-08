@@ -1,5 +1,4 @@
-
-# run_stage.py
+'''
 import os
 import time
 import numpy as np
@@ -87,7 +86,7 @@ def run_experiment(instance_path, base_save_dir, num_runs=5):
         all_histories.append(history)
         ga_final_makespans.append(mspan)
         best_results.append((mspan, schedule))
-        print(f"  👉 Run {i + 1:02d}/{num_runs} 완료 - Makespan: {mspan}")
+        print(f"Run {i + 1:02d}/{num_runs} 완료 - Makespan: {mspan}")
     total_duration = time.time() - start_time
     avg_time_per_run = total_duration / num_runs
 
@@ -156,9 +155,9 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
 '''
+
+
 # run_stage_barnes.py
 import os
 import time
@@ -173,27 +172,27 @@ from viz_plotly import plot_gantt_plotly
 
 # 논문(Zhang, 2011) Table 4 (Results of BCdata) 명시 정보
 PAPER_REFERENCE = {
-    "mt10c1": [655, 927, 927, 928.0],
-    "mt10cc": [655, 914, 910, 910.0],
-    "mt10x": [655, 929, 918, 918.0],
-    "mt10xx": [655, 929, 918, 918.0],
-    "mt10xxx": [655, 936, 918, 918.0],
-    "mt10xy": [655, 913, 905, 906.0],
-    "mt10xyz": [655, 849, 847, 847.0],
-    "setb4c9": [857, 924, 914, 914.0],
-    "setb4cc": [857, 909, 909, 910.0],
-    "setb4x": [846, 937, 925, 925.0],
-    "setb4xx": [847, 930, 925, 925.0],
-    "setb4xxx": [846, 925, 925, 925.0],
-    "setb4xy": [845, 924, 916, 916.0],
-    "setb4xyz": [838, 914, 905, 908.1],
-    "seti5c12": [1027, 1185, 1174, 1174.0],
-    "seti5cc": [955, 1136, 1136, 1136.2],
-    "seti5x": [955, 1218, 1209, 1209.0],
-    "seti5xx": [955, 1204, 1204, 1204.0],
-    "seti5xxx": [955, 1213, 1204, 1204.0],
+    # "mt10c1": [655, 927, 927, 928.0],
+    # "mt10cc": [655, 914, 910, 910.0],
+    # "mt10x": [655, 929, 918, 918.0],
+    # "mt10xx": [655, 929, 918, 918.0],
+    # "mt10xxx": [655, 936, 918, 918.0],
+    # "mt10xy": [655, 913, 905, 906.0],
+    # "mt10xyz": [655, 849, 847, 847.0],
+    # "setb4c9": [857, 924, 914, 914.0],
+    # "setb4cc": [857, 909, 909, 910.0],
+    # "setb4x": [846, 937, 925, 925.0],
+    # "setb4xx": [847, 930, 925, 925.0],
+    # "setb4xxx": [846, 925, 925, 925.0],
+    # "setb4xy": [845, 924, 916, 916.0],
+    # "setb4xyz": [838, 914, 905, 908.1],
+    # "seti5c12": [1027, 1185, 1174, 1174.0],
+    # "seti5cc": [955, 1136, 1136, 1136.2],
+    # "seti5x": [955, 1218, 1209, 1209.0],
+    # "seti5xx": [955, 1204, 1204, 1204.0],
+    # "seti5xxx": [955, 1213, 1204, 1204.0],
     "seti5xy": [955, 1148, 1136, 1136.3],
-    "seti5xyz": [955, 1127, 1125, 1126.5]
+    # "seti5xyz": [955, 1127, 1125, 1126.5]
 }
 
 POPSIZE_MAP = {
@@ -294,18 +293,22 @@ def run_experiment(instance_path, base_save_dir, num_runs=5):
 
 
 def main():
+    # test_instances = [
+    #     "Dataset/Barnes/Text/mt10c1.fjs", "Dataset/Barnes/Text/mt10cc.fjs",
+    #     "Dataset/Barnes/Text/mt10x.fjs", "Dataset/Barnes/Text/mt10xx.fjs",
+    #     "Dataset/Barnes/Text/mt10xxx.fjs", "Dataset/Barnes/Text/mt10xy.fjs",
+    #     "Dataset/Barnes/Text/mt10xyz.fjs", "Dataset/Barnes/Text/setb4c9.fjs",
+    #     "Dataset/Barnes/Text/setb4cc.fjs", "Dataset/Barnes/Text/setb4x.fjs",
+    #     "Dataset/Barnes/Text/setb4xx.fjs", "Dataset/Barnes/Text/setb4xxx.fjs",
+    #     "Dataset/Barnes/Text/setb4xy.fjs", "Dataset/Barnes/Text/setb4xyz.fjs",
+    #     "Dataset/Barnes/Text/seti5c12.fjs", "Dataset/Barnes/Text/seti5cc.fjs",
+    #     "Dataset/Barnes/Text/seti5x.fjs", "Dataset/Barnes/Text/seti5xx.fjs",
+    #     "Dataset/Barnes/Text/seti5xxx.fjs", "Dataset/Barnes/Text/seti5xy.fjs",
+    #     "Dataset/Barnes/Text/seti5xyz.fjs"
+    # ]
+
     test_instances = [
-        "Dataset/Barnes/Text/mt10c1.fjs", "Dataset/Barnes/Text/mt10cc.fjs",
-        "Dataset/Barnes/Text/mt10x.fjs", "Dataset/Barnes/Text/mt10xx.fjs",
-        "Dataset/Barnes/Text/mt10xxx.fjs", "Dataset/Barnes/Text/mt10xy.fjs",
-        "Dataset/Barnes/Text/mt10xyz.fjs", "Dataset/Barnes/Text/setb4c9.fjs",
-        "Dataset/Barnes/Text/setb4cc.fjs", "Dataset/Barnes/Text/setb4x.fjs",
-        "Dataset/Barnes/Text/setb4xx.fjs", "Dataset/Barnes/Text/setb4xxx.fjs",
-        "Dataset/Barnes/Text/setb4xy.fjs", "Dataset/Barnes/Text/setb4xyz.fjs",
-        "Dataset/Barnes/Text/seti5c12.fjs", "Dataset/Barnes/Text/seti5cc.fjs",
-        "Dataset/Barnes/Text/seti5x.fjs", "Dataset/Barnes/Text/seti5xx.fjs",
-        "Dataset/Barnes/Text/seti5xxx.fjs", "Dataset/Barnes/Text/seti5xy.fjs",
-        "Dataset/Barnes/Text/seti5xyz.fjs"
+     "Dataset/Barnes/Text/seti5xy.fjs"
     ]
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -325,7 +328,6 @@ def main():
         csv_file = os.path.join(base_save_dir, "barnes_experiment_summary.csv")
         df.to_csv(csv_file, index=False, encoding='utf-8-sig')
 
-        print("\n📊 [Barnes 전체 실험 결과 요약 표]")
         print("-" * 100)
         print(df.to_string(index=False))
         print("-" * 100)
@@ -336,7 +338,8 @@ def main():
 
 if __name__ == "__main__":
     main()
-'''
+    
+
 '''
 # run_stage_dauzere.py
 import os

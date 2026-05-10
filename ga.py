@@ -137,36 +137,54 @@ def crossover_OS_POX(p1_os, p2_os, num_jobs):
     return c1_os, c2_os
 
 def mutate_MS(ms, instance, pm):
-    for mut_idx in range(len(ms)):
-        if random.random() <= pm:
-            target_op = instance.ops_instances[mut_idx]
+    if random.random() > pm:
+        return ms
 
-            best_alt_idx = 0
-            min_time = float('inf')
-            for alt_idx, (machine_id, processing_time) in enumerate(target_op.alternatives):
-                if processing_time < min_time:
-                    min_time = processing_time
-                    best_alt_idx = alt_idx
+    mut_idx = random.randrange(len(ms))
+    target_op = instance.ops_instances[mut_idx]
 
-            ms[mut_idx] = best_alt_idx
-
+    min_time = min(processing_time for _, processing_time in target_op.alternatives)
+    best_candidates = [
+        alt_idx
+        for alt_idx, (_, processing_time) in enumerate(target_op.alternatives)
+        if processing_time == min_time
+    ]
+    ms[mut_idx] = random.choice(best_candidates)
     return ms
 
-def mutate_OS(os):
-    idx1, idx2 = random.sample(range(len(os)), 2)
-    os[idx1], os[idx2] = os[idx2], os[idx1]
+def population_diversity(population):
+    unique_ms  = len({tuple(ms) for ms, os in population})
+    unique_os  = len({tuple(os) for ms, os in population})
+    unique_ind = len({(tuple(ms), tuple(os)) for ms, os in population})
+    return unique_ms, unique_os, unique_ind
+
+
+def mutate_OS(os, pm):
+    if random.random() > pm:
+        return os
+
+    i, j = random.sample(range(len(os)), 2)
+    os[i], os[j] = os[j], os[i]
     return os
 
 
-def run_ga(instance, pop_size=100, generations=100, pc=0.7, pm=0.01):
+def run_ga(instance, pop_size=100, generations=100, pc=0.7, pm=0.01, track_diversity=False):
     population = generate_initial_population(instance, pop_size)
 
     best_makespan_history = []
+    diversity_history = []
     global_best_makespan = float('inf')
     global_best_schedule = None
 
     for gen in range(generations):
         fitnesses = [makespan(decode_calc(instance, os, ms)) for ms, os in population]
+
+        if track_diversity:
+            u_ms, u_os, u_ind = population_diversity(population)
+            entry = {'gen': gen, 'unique_ms': u_ms, 'unique_os': u_os, 'unique_ind': u_ind}
+            if gen == 0:
+                entry['all_fitnesses'] = list(fitnesses)
+            diversity_history.append(entry)
 
         current_best = min(fitnesses)
         best_idx = fitnesses.index(current_best)
@@ -176,8 +194,6 @@ def run_ga(instance, pop_size=100, generations=100, pc=0.7, pm=0.01):
 
         best_makespan_history.append(global_best_makespan)
         new_population = []
-
-        # elitism...
 
         while len(new_population) < pop_size:
             p1_ms, p1_os = select_tournament(population, fitnesses)
@@ -191,11 +207,20 @@ def run_ga(instance, pop_size=100, generations=100, pc=0.7, pm=0.01):
                 c1_os, c2_os = crossover_OS_POX(p1_os, p2_os, len(instance.jobs))
 
             c1_ms = mutate_MS(c1_ms, instance, pm)
-            if random.random() < pm: c1_os = mutate_OS(c1_os)
+            c1_os = mutate_OS(c1_os, pm)
             c2_ms = mutate_MS(c2_ms, instance, pm)
-            if random.random() < pm: c2_os = mutate_OS(c2_os)
+            c2_os = mutate_OS(c2_os, pm)
 
             new_population.append((c1_ms, c1_os))
             new_population.append((c2_ms, c2_os))
         population = new_population
-    return global_best_schedule, global_best_makespan, best_makespan_history
+        fitnesses = [makespan(decode_calc(instance, os, ms)) for ms, os in population]
+        current_best = min(fitnesses)
+        best_idx = fitnesses.index(current_best)
+        if current_best < global_best_makespan:
+            global_best_makespan = current_best
+            global_best_schedule = decode_calc(instance, population[best_idx][1], population[best_idx][0])
+
+        best_makespan_history.append(global_best_makespan)
+
+    return global_best_schedule, global_best_makespan, best_makespan_history, diversity_history

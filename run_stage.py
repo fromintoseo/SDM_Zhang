@@ -1,4 +1,4 @@
-'''
+
 import os
 import time
 import numpy as np
@@ -82,7 +82,7 @@ def run_experiment(instance_path, base_save_dir, num_runs=5):
 
     start_time = time.time()
     for i in range(num_runs):
-        schedule, mspan, history = run_ga(inst, target_pop_size, 100, 0.7, 0.01)
+        schedule, mspan, history, _ = run_ga(inst, target_pop_size, 100, 0.7, 0.01)
         all_histories.append(history)
         ga_final_makespans.append(mspan)
         best_results.append((mspan, schedule))
@@ -155,9 +155,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
 '''
-
-
 # run_stage_barnes.py
 import os
 import time
@@ -255,7 +255,7 @@ def run_experiment(instance_path, base_save_dir, num_runs=5):
 
     start_time = time.time()
     for i in range(num_runs):
-        schedule, mspan, history = run_ga(inst, target_pop_size, 100, 0.7, 0.01)
+        schedule, mspan, history, _ = run_ga(inst, target_pop_size, 100, 0.7, 0.01)
         all_histories.append(history)
         ga_final_makespans.append(mspan)
         best_results.append((mspan, schedule))
@@ -338,7 +338,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
+'''
 
 '''
 # run_stage_dauzere.py
@@ -433,7 +433,7 @@ def run_experiment(instance_path, base_save_dir, num_runs=5):
 
     start_time = time.time()
     for i in range(num_runs):
-        schedule, mspan, history = run_ga(inst, target_pop_size, 100, 0.7, 0.01)
+        schedule, mspan, history, _ = run_ga(inst, target_pop_size, 100, 0.7, 0.01)
         all_histories.append(history)
         ga_final_makespans.append(mspan)
         best_results.append((mspan, schedule))

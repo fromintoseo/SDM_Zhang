@@ -5,7 +5,7 @@ from typing import List
 from model import Instance, ScheduledOp
 
 
-def plot_gantt_plotly(instance: Instance, schedule: List[ScheduledOp], out_html: str = "gantt.html") -> None:
+def plot_gantt_plotly(instance: Instance, schedule: List[ScheduledOp], out_html: str = "gantt.html", show: bool = False) -> None:
     fig = go.Figure()
 
     unique_jobs = sorted(list(set(op.job_id for op in schedule)))
@@ -64,3 +64,5 @@ def plot_gantt_plotly(instance: Instance, schedule: List[ScheduledOp], out_html:
 
     fig.write_html(out_html)
     print(f"저장되었습니다: {out_html}")
+    if show:
+        fig.show()
